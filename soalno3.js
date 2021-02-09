@@ -2,87 +2,72 @@ let todos = [
   {id: 1, todo: "belajar coding"},
   {id: 2, todo: "nanti tidur"}
 ]
-/*
-Buatlah sebuang function CRUD sederhana pada data di atas
-
-- deleteByID(id)
-- updateByID(id) */
+/*Buatlah sebuah function CRUD sederhana pada data di atas*/
 
 // Function printAll()
-console.log("Hasil fungsi printAll:")
+// console.log(todos.length);
+console.log("Hasil fungsi printAll:");
 
-let printAll = () => {
-  todos.map((todo) => {
-    
-    console.log(todo.id+",", todo.todo)
-  })
+function printAll(){
+  todos.forEach(value => {
+    console.log(`${value.id}, ${value.todo}\n`);
+  });
 }
 printAll();
 
 // Function printByID()
 console.log("Hasil fungsi printByID:")
 
-function printByID(id){
-  console.log(todos[id].id+",", todos[id].todo);
+function printByID(x){
+  todos.forEach(value => {
+    if(value.id === x){
+      console.log(value.id+", "+value.todo);
+    }
+  })
 }
-printByID(0);
+printByID(1);
 
-//Function add(newTodo)
-console.log("Hasil fungsi addTodos:")
+// Function add(newTodo)
+console.log("Hasil fungsi add(newTodo):")
 
-let addTodos = (newTodo) => {
+function add(newTodo) {
   todos.push({
+    // id: [todos.length-1],
     id: todos.length+1,
     todo: newTodo
   })
   printAll()
 }
-addTodos("Ngerjain tugas");
 
+add("ngerjain tugas");
+// add("main games");
 
-//Function deleteByID(id)
+// Function deleteByID(id)
 console.log("Hasil fungsi deleteByID:")
 
-function deleteByID(id){
-  // console.log(id);
-  delete todos[id];
+function deleteByID(idnya) {
+  todos.forEach((value,idx) => {
+    if(value.id === idnya){
+      
+      todos.splice(idx,1);
+    }
+  })
   printAll()
 }
-deleteByID(1);
 
-//Function updateByID(id)
-console.log("Hasil fungsi updateByID:")
+deleteByID(2);
 
+// Function updateByID(newTodo)
+console.log("Hasil fungsi updateByID(newTodo):")
 
-function updateByID(id,newTodo){
-  // console.log(todos[id].id.todo)
-  
-  console.log(todos[id-1].todo=newTodo);
-  // console.log(todos[id].id.todo=newTodo)
-  printAll();
+function updateByID(idupdate,newtodo) {
+  todos.forEach(value => {
+    if(value.id === idupdate){
+      value.todo = newtodo;
+    }
+  })
+  // delete todos.id;
+  printAll()  
 }
 
 updateByID(1,"belajar CRUD");
-
-
-
-
-
-
-//tes
-// function printAll(item){
-//   console.log(`${item.id}, ${item.todo}\n`);
-// }
-// todos.forEach(printAll);
-
-//item 3 dobel
-// printById();
-// function add(item){
-//   printAll(item);
-//   // return 
-//   // console.log(`${item.id}, ${item.todo}\n`);
-//   console.log(`${item.id=3}, ${item.todo="ngerjain tugas"}\n`);
-// }
-// todos.forEach(add);
-
-
